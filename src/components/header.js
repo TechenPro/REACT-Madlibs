@@ -3,8 +3,10 @@ import React from 'react';
 const Header = (title) => {
   return (
     <div className='header'>
+      <div className='header__skew'></div>
+      <div className='header__border'></div>
       <h1>{title}</h1>
-      <p>Fill out the fields below to generate a Mad Lib story.</p>
+      <p>Fill out all of the fields below and click the button to generate a Mad Lib story.</p>
     </div>
   );
 }

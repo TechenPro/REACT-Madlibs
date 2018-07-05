@@ -1,50 +1,166 @@
+@mixin button {
+  height: 50px;
+  width: 300px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+  color: white;
+  font-size: 22px;
+  font-family: 'Montserrat';
+  text-align: center;
+}
+
 .home {
+  position: relative;
   background-color: rgba(207, 207, 207, .06);
   display: grid;
-
   justify-items: center;
-  align-items: center;
+  grid-template-rows: [header-s] 218px [header-e card-s] minmax(736px, ) [card-e];
 }
 
 .header {
+  align-self: center;
+  font-family: 'Montserrat';
+  color: white;
+  text-align: center;
 
   &__skew {
-    // position
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 50%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0%, 100% 50%, 0% 100%);
+    z-index: -10;
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 46vh;
+    width: 100vw;
+    background-color: #444444;
+  }
+
+  &__border {
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 50%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0%, 100% 50%, 0% 100%);
+    z-index: -15;
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 48vh;
+    width: 100vw;
+    background-color: #00cb79;
   }
 }
 
 .card {
-  height: 736px;
+  min-height: 736px;
   width: 1240px;
   box-shadow: 0 4px 30px 0 rgba(0, 0, 0, .06);
   border-radius: 7px;
-
+  background-color: white;
   display: grid;
-  grid-template-rows: 1fr 50px;
+
 
   &__inputs {
-    background-color: skyblue;
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 30px);
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     align-items: center;
+    grid-row-gap: 120px;
+    margin: 66px 83px 0;
+  }
+
+  button {
+    justify-self: center;
+    transform: translateY(50%);
+    margin-top: 50px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__generate {
+    background-color: #00cb79;
+    @include button;
+  }
+
+  &__clear {
+    background-color: #45b0e5;
+    @include button;
+    margin-top: 50px;
+
+  }
+
+  &__content {
+    width: 1100px;
+    height: 297px;
+    background-color: #f2f2f2;
+    justify-self: center;
+    margin-bottom: 84px;
+
+    p {
+      line-height: 29px;
+      padding: 50px 47px;
+      font-family: 'Montserrat';
+      font-size: 16px;
+      font-weight: 300;
+    }
+
+    &__label {
+      height: 18px;
+      width: 18px;
+      line-height: 22px;
+      background-color: black;
+      border-radius: 50%;
+      font-size: 14px;
+      text-align: center;
+      color: white;
+      display: inline-block;
+      margin: 4px;
+    }
   }
 }
 
 .inputs {
   display: grid;
   grid-template-columns: [number-s] 26px [number-e input-s] 1fr [input-e];
+  grid-column-gap: 8px;
+  font-family: 'Montserrat';
+  text-align: center;
 
   &__title {
     grid-column: input-s/input-e;
+    border-top: 1px solid #b3b3b3;
+    color: #b3b3b3;
+    font-size: 12px;
+    font-weight: 300;
   }
 
   input {
     grid-column: input-s/input-e;
+    font-size: 15px;
+    text-align: inherit;
+    padding: 4px 0;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__number {
-    grid-column: number-s/number-e
+    grid-column: number-s/number-e;
+    color: white;
+    height: 26px;
+    width: 26px;
+    font-size: 20px;
+    line-height: 24px;
+    border-radius: 50%;
+  }
+
+  .green {
+    background-color: #00cb79;
+  }
+
+  .gray {
+    background-color: #b3b3b3;
   }
 }
